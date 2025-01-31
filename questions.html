@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizz</title>
+  </head>
+  <style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f7edff;
+    }
+    .questionDiv {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 15px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      height: 450px;
+      width: 650px;
+      border-radius: 15px;
+      box-shadow: 0 0 5px 2px rgb(126, 126, 126);
+      background-color: white;
+    }
+    .question {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      margin: 10px 10px;
+    }
+    .answerDiv {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 1.5em;
+      border-radius: 15px;
+      width: 95%;
+      height: 17%;
+      box-shadow: 0 0 5px 2px rgb(126, 126, 126);
+      cursor: pointer;
+    }
+
+    input {
+      margin-left: 15px;
+    }
+    main {
+      height: 80vh;
+      width: 100vw;
+    }
+    footer {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      height: 20vh;
+      width: 100vw;
+    }
+    #score {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    #submit {
+      cursor: pointer;
+      font-size: 1.5em;
+      font-weight: bold;
+      background-color: rgba(0, 110, 253, 0.474);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 15px;
+      border: none;
+      margin-top: 20px;
+      transition: 0.3s;
+      user-select: none;
+    }
+    #submit:hover {
+      transform: translateY(-3px);
+    }
+    #submit:active {
+      transform: translateY(3px);
+    }
+    .none {
+      display: none;
+    }
+    @media screen and (max-width: 700px) {
+      .questionDiv {
+        width: 350px;
+      }
+      #score {
+        font-size: 1em;
+      }
+      #submit {
+        font-size: 1em;
+
+      }
+    }
+  </style>
+  <body>
+    <main>
+      <div id="questionDiv1" class="questionDiv">
+        <p id="question1" class="question">Age</p>
+        <div id="answerDiv1" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="18" /><label
+            class="answer"
+            >18</label
+          >
+        </div>
+        <div id="answerDiv2" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="20" /><label
+            class="answer"
+            >20</label
+          >
+        </div>
+        <div id="answerDiv3" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="15" /><label
+            class="answer"
+            >15</label
+          >
+        </div>
+        <div id="answerDiv4" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="17" /><label
+            class="answer"
+            >17</label
+          >
+        </div>
+      </div>
+      <div id="questionDiv2" class="questionDiv none">
+        <p id="question2" class="question">Birth month</p>
+        <div id="answerDiv5" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="December"
+          /><label class="answer">December</label>
+        </div>
+        <div id="answerDiv6" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="April" /><label
+            class="answer"
+            >April</label
+          >
+        </div>
+        <div id="answerDiv7" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="October"
+          /><label class="answer">October</label>
+        </div>
+        <div id="answerDiv8" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="May" /><label
+            class="answer"
+            >May</label
+          >
+        </div>
+      </div>
+      <div id="questionDiv3" class="questionDiv none">
+        <p id="question3" class="question">Favorite color</p>
+        <div id="answerDiv9" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Blue" /><label
+            class="answer"
+            >Blue 🔵</label
+          >
+        </div>
+        <div id="answerDiv10" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Red" /><label
+            class="answer"
+            >Red 🔴</label
+          >
+        </div>
+        <div id="answerDiv11" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Green" /><label
+            class="answer"
+            >Green 🟢</label
+          >
+        </div>
+        <div id="answerDiv12" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Yellow"
+          /><label class="answer">Yellow 🟡</label>
+        </div>
+      </div>
+      <div id="questionDiv4" class="questionDiv none">
+        <p id="question4" class="question">Favorite food</p>
+        <div id="answerDiv13" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Pizza" /><label
+            class="answer"
+            >Pizza 🍕</label
+          >
+        </div>
+        <div id="answerDiv14" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Burger"
+          /><label class="answer">Burger 🍔</label>
+        </div>
+        <div id="answerDiv15" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Salad" /><label
+            class="answer"
+            >Salad 🥗</label
+          >
+        </div>
+        <div id="answerDiv16" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Barbecue"
+          /><label class="answer">Barbecue 🍢</label>
+        </div>
+      </div>
+      <div id="questionDiv5" class="questionDiv none">
+        <p id="question5" class="question">Favorite sport</p>
+        <div id="answerDiv17" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Table Tennis"
+          /><label class="answer">Table tennis 🏓</label>
+        </div>
+        <div id="answerDiv18" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Basketball"
+          /><label class="answer">Basketball 🏀</label>
+        </div>
+        <div id="answerDiv19" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Football"
+          /><label class="answer">Football ⚽</label>
+        </div>
+        <div id="answerDiv20" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Boxing"
+          /><label class="answer">Boxing 🥊</label>
+        </div>
+      </div>
+      <div id="questionDiv6" class="questionDiv none">
+        <p id="question5" class="question">Favorite soft drink</p>
+        <div id="answerDiv17" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Coca-Cola"
+          /><label class="answer">Coca-Cola 🥤</label>
+        </div>
+        <div id="answerDiv18" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Pepsi" /><label
+            class="answer"
+            >Pepsi 🔵</label
+          >
+        </div>
+        <div id="answerDiv19" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Sprite"
+          /><label class="answer">Sprite 🍈</label>
+        </div>
+        <div id="answerDiv20" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Fanta" /><label
+            class="answer"
+            >Fanta 🍊</label
+          >
+        </div>
+      </div>
+      <div id="questionDiv7" class="questionDiv none">
+        <p id="question5" class="question">Height</p>
+        <div id="answerDiv17" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="160-170cm"
+          /><label class="answer">160-170 cm</label>
+        </div>
+        <div id="answerDiv18" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="170-180cm"
+          /><label class="answer">170-180 cm</label>
+        </div>
+        <div id="answerDiv19" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="180-190cm"
+          /><label class="answer">180-190 cm</label>
+        </div>
+        <div id="answerDiv20" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="190+cm"
+          /><label class="answer">190+ cm</label>
+        </div>
+      </div>
+      <div id="questionDiv8" class="questionDiv none">
+        <p id="question5" class="question">Siblings</p>
+        <div id="answerDiv17" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="1" /><label
+            class="answer"
+            >1</label
+          >
+        </div>
+        <div id="answerDiv18" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="2" /><label
+            class="answer"
+            >2</label
+          >
+        </div>
+        <div id="answerDiv19" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="3" /><label
+            class="answer"
+            >3</label
+          >
+        </div>
+        <div id="answerDiv20" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="4" /><label
+            class="answer"
+            >4</label
+          >
+        </div>
+      </div>
+      <div id="questionDiv9" class="questionDiv none">
+        <p id="question5" class="question">Favorite programming language</p>
+        <div id="answerDiv17" class="answerDiv">
+          <input type="radio" class="radio" name="answer" vale="C#" /><label
+            class="answer"
+            >C#</label
+          >
+        </div>
+        <div id="answerDiv18" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Python"
+          /><label class="answer">Python</label>
+        </div>
+        <div id="answerDiv19" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Javascript"
+          /><label class="answer">Javascript</label>
+        </div>
+        <div id="answerDiv20" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="C++" /><label
+            class="answer"
+            >C++</label
+          >
+        </div>
+      </div>
+      <div id="questionDiv10" class="questionDiv none">
+        <p id="question10" class="question">Mobile phone</p>
+        <div id="answerDiv17" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Samsung"
+          /><label class="answer">Samsung</label>
+        </div>
+        <div id="answerDiv18" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Iphone"
+          /><label class="answer">Iphone</label>
+        </div>
+        <div id="answerDiv19" class="answerDiv">
+          <input type="radio" class="radio" name="answer" value="Redmi" /><label
+            class="answer"
+            >Redmi</label
+          >
+        </div>
+        <div id="answerDiv20" class="answerDiv">
+          <input
+            type="radio"
+            class="radio"
+            name="answer"
+            value="Google Pixel"
+          /><label class="answer">Google Pixel</label>
+        </div>
+      </div>
+      <div id="questionDiv11" class="questionDiv none">
+        <p id="question11" class="question">
+          You have finished the quizz! Your final score is
+          <span id="finalScore"></span>/10
+        </p>
+
+      </div>
+    </main>
+    <footer>
+      <div id="score"><span id="currentScore">0</span>/10</div>
+      <button id="submit">Submit</button>
+    </footer>
+
+    <script>
+      const answerDiv = document.querySelectorAll(".answerDiv");
+      const submit = document.getElementById("submit");
+      const radio = document.querySelectorAll(".radio");
+      const currentScore = document.getElementById("currentScore");
+      const finalScore = document.getElementById("finalScore");
+
+      let score = 0;
+
+      let isChecked = false;
+
+      let currentPos = 1;
+
+      const answers = [
+        "17",
+        "April",
+        "Green",
+        "Barbecue",
+        "Basketball",
+        "Fanta",
+        "180-190cm",
+        "1",
+        "Javascript",
+        "Samsung"
+      ];
+      const selected = [];
+
+      answerDiv.forEach((d) => {
+        d.addEventListener("click", function () {
+          d.querySelector(".radio").checked = true;
+          isChecked = true;
+        });
+      });
+
+      submit.addEventListener("click", function () {
+        console.log(`currentPos: ${currentPos}`);
+
+        radio.forEach((r) => {
+          if (r.checked) {
+            selected.push(r.value);
+          }
+        });
+
+        if (answers[currentPos - 1] == selected[currentPos - 1]) {
+          score++;
+        }
+        currentScore.textContent = score;
+
+        if (!isChecked) {
+          alert("Please select an answer!");
+        } else {
+          if (currentPos < 11) {
+            currentPos++;
+          }
+        }
+
+        if (currentPos === 11) {
+          submit.classList.add("none");
+        }
+
+        let nextQuestion = document.getElementById(`questionDiv${currentPos}`);
+        nextQuestion.classList.remove("none");
+
+        let prevQuestion = document.getElementById(
+          `questionDiv${currentPos - 1}`
+        );
+        prevQuestion.classList.add("none");
+
+        setTimeout(function () {
+          isChecked = false;
+        }, 10);
+
+        finalScore.textContent = score;
+      });
+    </script>
+  </body>
+</html>
